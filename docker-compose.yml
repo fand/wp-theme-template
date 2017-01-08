@@ -1,0 +1,16 @@
+version: '2'
+services:
+  wordpress:
+    image: wordpress
+    ports:
+      - 8080:80
+    depends_on:
+      - mysql
+    environment:
+      WORDPRESS_DB_PASSWORD: example
+    volumes:
+      - ./theme:/var/www/html/wp-content/themes:ro
+  mysql:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: example
